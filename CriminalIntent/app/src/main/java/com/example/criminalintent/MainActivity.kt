@@ -7,11 +7,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val currentFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container)
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
 //        Этот код создает и закрепляет транзакцию фрагмента.
         if (currentFragment == null) {
-            val fragment = CrimeFragment()
+            val fragment = CrimeListFragment.newInstance()
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container,
