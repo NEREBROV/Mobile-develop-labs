@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val currentFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container)
+//        Этот код создает и закрепляет транзакцию фрагмента.
         if (currentFragment == null) {
             val fragment = CrimeFragment()
             supportFragmentManager
