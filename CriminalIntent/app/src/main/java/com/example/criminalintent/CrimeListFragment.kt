@@ -47,8 +47,8 @@ class CrimeListFragment : Fragment() {
 
     private inner class CrimeHolder(view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var crime: Crime
-        private val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
-        private val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
+        val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
+        val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
 
         fun bind(crime: Crime) {
             this.crime = crime
