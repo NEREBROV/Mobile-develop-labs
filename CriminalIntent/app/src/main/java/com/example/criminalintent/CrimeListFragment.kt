@@ -64,14 +64,12 @@ class CrimeListFragment : Fragment() {
             val view = layoutInflater.inflate(R.layout.list_item_crime, parent, false)
             return CrimeHolder(view)
         }
-        override fun getItemCount() = crimes.size
+
         override fun onBindViewHolder(holder: CrimeHolder, position: Int) {
             val crime = crimes[position]
-            holder.apply {
-                titleTextView.text = crime.title
-                dateTextView.text = crime.date.toString()
-            }
+            holder.bind(crime)
         }
+        override fun getItemCount() = crimes.size
     }
 
 
