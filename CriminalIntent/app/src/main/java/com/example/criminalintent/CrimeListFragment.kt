@@ -13,12 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 private const val TAG = "CrimeListFragment"
 class CrimeListFragment : Fragment() {
     private lateinit var crimeRecyclerView: RecyclerView
-    private val crimeListViewModel:
-            CrimeListViewModel by lazy {
+
+    private val crimeListViewModel: CrimeListViewModel by lazy {
         ViewModelProviders.of(this).get(CrimeListViewModel::class.java)
     }
-    override fun onCreate(savedInstanceState:
-                          Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "Total crimes:${crimeListViewModel.crimes.size}")
     }
@@ -31,6 +30,12 @@ class CrimeListFragment : Fragment() {
         crimeRecyclerView = view.findViewById(R.id.crime_recycler_view) as RecyclerView
         crimeRecyclerView.layoutManager = LinearLayoutManager(context)
         return view
+    }
+
+    companion object {
+        fun newInstance(): CrimeListFragment {
+            return CrimeListFragment()
+        }
     }
 }
 
