@@ -1,5 +1,6 @@
 package com.example.criminalintent.database
 
+import androidx.room.TypeConverter
 import java.util.*
 
 class CrimeTypeConverters {
