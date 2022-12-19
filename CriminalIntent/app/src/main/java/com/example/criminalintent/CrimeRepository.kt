@@ -24,6 +24,7 @@ constructor(context: Context) {
                 INSTANCE = CrimeRepository(context)
             }
         }
+
         fun get(): CrimeRepository {
             return INSTANCE ?:
             throw
