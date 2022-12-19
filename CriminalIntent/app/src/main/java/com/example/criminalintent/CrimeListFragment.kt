@@ -95,9 +95,8 @@ class CrimeListFragment : Fragment() {
             dateTextView.text = this.crime.date.toString()
         }
         override fun onClick(v: View) {
-            Toast.makeText(context, "${crime.title} pressed!"
-                , Toast.LENGTH_SHORT)
-                .show()
+            callbacks?.onCrimeSelected(crime.id
+            )
         }
 
     }
