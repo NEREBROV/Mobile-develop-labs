@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.criminalintent.database.CrimeDatabase
 
-private const val DATABASE_NAME = "crimedatabase"
+private const val DATABASE_NAME = "crime-database"
 
 class CrimeRepository private
 constructor(context: Context) {
