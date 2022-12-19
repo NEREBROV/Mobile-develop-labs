@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.lifeecycle.Observer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,19 @@ class CrimeFragment : Fragment() {
         }
         return view
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        crimeDetailViewModel.crimeLiveData.observe(viewLifecycleOwner,
+            Observer { crime ->
+                crime?.let {
+                    this.crime = crime
+                    updateUI()
+                }
+            })
+    }
+
+
     override fun onStart() {
         super.onStart()
         val titleWatcher = object : TextWatcher {
@@ -68,8 +82,7 @@ class CrimeFragment : Fragment() {
                 before: Int,
                 count: Int
             ) {
-                crime.title =
-                    sequence.toString()
+                crime.title = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {
@@ -84,6 +97,14 @@ class CrimeFragment : Fragment() {
             }
         }
     }
+
+    private fun updateUI() {
+        titleField.setText(crime.title)
+        dateButton.text = crime.date.toString()
+        solvedCheckBox.isChecked = crime.isSolved
+    }
+
+
     companion object {
         fun newInstance(crimeId: UUID):
                 CrimeFragment {
