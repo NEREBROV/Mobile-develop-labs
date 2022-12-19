@@ -3,6 +3,7 @@ package com.example.criminalintent
 import android.content.Context
 import androidx.room.Room
 import com.example.criminalintent.database.CrimeDatabase
+import java.util.*
 
 private const val DATABASE_NAME = "crime-database"
 
@@ -14,12 +15,13 @@ constructor(context: Context) {
             DATABASE_NAME
         ).build()
     private val crimeDao = database.crimeDao()
+    fun getCrimes(): List<Crime> = crimeDao.getCrimes()
+    fun getCrime(id: UUID): Crime? = crimeDao.getCrime(id)
     companion object {
         private var INSTANCE: CrimeRepository? = null
         fun initialize(context: Context) {
             if (INSTANCE == null) {
-                INSTANCE =
-                    CrimeRepository(context)
+                INSTANCE = CrimeRepository(context)
             }
         }
         fun get(): CrimeRepository {
